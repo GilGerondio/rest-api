@@ -59,7 +59,8 @@ export const comparePassword = async (email: string, supplied_password: string):
     const user = usersWithEmail[0];
 
     if (!user) 
-    {
+	{
+
         return null;
     }
 
@@ -73,6 +74,7 @@ export const update = async (id: string, updateValues: User): Promise<UnitUser |
 
     if (!userToUpdate) 
     {
+
         return null;
     }
 
