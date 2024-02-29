@@ -38,7 +38,6 @@ export const create = async (productInfo: Product): Promise<null | UnitProduct> 
 		await findOne(id)
 	}
 
-
 	products[id] = {
 
         id : id,
