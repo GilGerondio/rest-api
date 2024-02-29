@@ -20,7 +20,7 @@ productRouter.get('/products', async (reg: Request, res : Response) => {
     }      
         
     })
-productRouter.get("/product/:id", async (req: Request , res : Response ) =>{
+productRouter.get("/product/:id", async (req: Request , res : Response ) => {
     try {
         const product = await database.findOne(req.params.id)
 
@@ -36,7 +36,7 @@ productRouter.get("/product/:id", async (req: Request , res : Response ) =>{
     }
 )
 
-productRouter.post("/product", async (req: Request , res : Response ) =>{
+productRouter.post("/product/", async (req: Request , res : Response ) => {
     try {
         const {name , price, quantity, image} = req.body
 
@@ -52,7 +52,7 @@ productRouter.post("/product", async (req: Request , res : Response ) =>{
     }
 )
 
-productRouter.put("/product/:id", async (req: Request , res : Response ) =>{
+productRouter.put("/product/:id", async (req: Request , res : Response ) => {
     try {
         const id = req.params.id
 
@@ -60,7 +60,8 @@ productRouter.put("/product/:id", async (req: Request , res : Response ) =>{
 
         const findProduct = await database.findOne(id)
 
-        if(!findProduct) { 
+        if(!findProduct) 
+        { 
             return res.status(StatusCodes.NOT_FOUND).json({error : `Product does not exist `})
         }
         
@@ -73,11 +74,12 @@ productRouter.put("/product/:id", async (req: Request , res : Response ) =>{
 
     }
 )
-productRouter.delete("/product/:id", async (req: Request , res : Response ) =>{
+productRouter.delete("/product/:id", async (req: Request , res : Response ) => {
     try {
         const getProduct= await database.findOne(req.params.id)
 
-        if(!getProduct) { 
+        if(!getProduct) 
+        { 
             return res.status(StatusCodes.NOT_FOUND).json({error : `No product with ID ${req.params.id}`})
         }
         

@@ -7,9 +7,8 @@ import { productRouter } from "./products/product.routes" // inserted here from 
 
 dotevnv.config()
 
-if (!process.env.PORT)
-{
-    console.log('No port value specified...')
+if(!process.env.port){
+    console.log(`No port value specified...`)
 }
 
 const PORT = parseInt(process.env.PORT as string, 10)
@@ -21,10 +20,9 @@ app.use(express.urlencoded({extended : true}))
 app.use(cors())
 app.use(helmet())
 
-app.use('/', userRouter) // inserted here from USERS
-app.use('/', productRouter) // inserted here from PRODUCTS
+app.use(`/`,  userRouter) // inserted here from USERS
+app.use(`/`, productRouter) // inserted here from PRODUCTS
 
-app.listen(PORT, () => 
-{
-    console.log('Server is listening on ${PORT}')
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`)
 })
