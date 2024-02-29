@@ -36,7 +36,7 @@ productRouter.get("/product/:id", async (req: Request , res : Response ) => {
     }
 )
 
-productRouter.post("/product/", async (req: Request , res : Response ) => {
+productRouter.post("/product/", async (req: Request , res : Response ) =>{
     try {
         const {name , price, quantity, image} = req.body
 

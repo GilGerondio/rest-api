@@ -49,6 +49,7 @@ export const create = async (productInfo: Product): Promise<null | UnitProduct> 
     
     return product[id]
 
+	
 }
 
 export const update = async (id : string, updateValues : Product) : Promise<UnitProduct | null> => {

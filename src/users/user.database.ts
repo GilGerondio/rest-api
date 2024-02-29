@@ -58,7 +58,8 @@ export const comparePassword = async (email: string, supplied_password: string):
     const usersWithEmail = await findByEmail(email.toLowerCase());
     const user = usersWithEmail[0];
 
-    if (!user) {
+    if (!user) 
+	{
         return null;
     }
 
@@ -70,12 +71,12 @@ export const comparePassword = async (email: string, supplied_password: string):
 export const update = async (id: string, updateValues: User): Promise<UnitUser | null> => {
     const userToUpdate = await findOne(id);
 
-    if (!userToUpdate) {
+    if (!userToUpdate) 
+	{
         return null;
     }
 
-    if (updateValues.password) 
-	{
+    if (updateValues.password) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(updateValues.password, salt);
         updateValues.password = hashedPassword;
@@ -86,7 +87,6 @@ export const update = async (id: string, updateValues: User): Promise<UnitUser |
 
     saveUsers();
 
-	
     return updatedUser;
 };
 

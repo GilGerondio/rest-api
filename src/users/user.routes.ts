@@ -80,7 +80,8 @@ userRouter.put('/user/:id', async (req: Request, res: Response) => {
         const { username, email, password } = req.body;
         const userToUpdate = await database.findOne(req.params.id);
 
-        if (!username || !email || !password || !userToUpdate) {
+        if (!username || !email || !password || !userToUpdate) 
+        {
             return res.status(StatusCodes.BAD_REQUEST).json({ error: `Please provide all the required parameters.` });
         }
 
@@ -96,7 +97,8 @@ userRouter.delete("/user/:id", async (req: Request, res: Response) => {
     try {
         const user = await database.findOne(req.params.id);
 
-        if (!user) {
+        if (!user) 
+        {
             return res.status(StatusCodes.NOT_FOUND).json({ error: `User does not exist` });
         }
 
@@ -119,8 +121,7 @@ userRouter.get("/users/search", async (req: Request, res: Response) => {
 
         let users: UnitUser[] = [];
 
-        if (name) 
-        {
+        if (name) {
             users = await database.findByUsername(name.toString());
         } else if (email) {
             users = await database.findByEmail(email.toString());
